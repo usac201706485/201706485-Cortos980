@@ -6,14 +6,14 @@
 def fileWrite(fileName = 'collatz.txt'):
     #Si el archivo 'fileName' no existe, se crea uno nuevo con ese nombre.
     archivo = open(fileName,'w') #Abrir para SOBREESCRIBIR el archivo existente
-    archivo.write('Sobreescribiendo archivo...\n')
-    print('Espere, sobreescribiendo el archivo...')
     for i in range(484):
-        archivo.write(str(listaI))
+        archivo.write(str(listaP[i]))
+        archivo.write('\n')
     archivo.close() #Siempre cerrar el archivo al finalizar la escritura
 
 
 entrada = 2
+listaP = []
 listaI = [] #Lista que se irá reciclando para guardar la secuencia de collatz
 while entrada <= 485:
     numero = entrada
@@ -27,9 +27,10 @@ while entrada <= 485:
         else:           #Evaluacion si el numero actual es impar
             numero = (numero * 3) + 1
             listaI.append(numero)
-    fileWrite()
+    listaP.append(listaI)
     print(listaI)        
     entrada += 1
     print('\n')
+fileWrite('collatz.txt')
 
 
